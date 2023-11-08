@@ -1,11 +1,20 @@
+"use client";
+import "@/app/ui/global.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
+
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <QueryClientProvider client={queryClient}>
+                    {children}
+                </QueryClientProvider>
+            </body>
+        </html>
+    );
 }
